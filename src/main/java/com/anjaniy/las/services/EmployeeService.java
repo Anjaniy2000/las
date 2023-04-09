@@ -1,7 +1,7 @@
 package com.anjaniy.las.services;
 
 import com.anjaniy.las.exceptions.EmployeeNotFoundException;
-import com.anjaniy.las.models.dto.EmployeeDto;
+import com.anjaniy.las.models.dto.common.EmployeeDto;
 import com.anjaniy.las.models.entities.Employee;
 import com.anjaniy.las.repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +23,7 @@ public class EmployeeService {
         employee.setLastName(employeeDto.getLastName());
         employee.setEmail(employeeDto.getEmail());
         employee.setDepartmentName(employeeDto.getDepartmentName());
+        employee.setRemainingLeaves(10L);
 
         employeeRepository.save(employee);
     }
@@ -40,12 +41,16 @@ public class EmployeeService {
             employeeDto.setLastName(employee.getLastName());
             employeeDto.setEmail(employee.getEmail());
             employeeDto.setDepartmentName(employee.getDepartmentName());
-
+            employeeDto.setRemainingLeaves(employee.getRemainingLeaves());
             return employeeDto;
 
 
 //        SELECT * FROM EMPLOYEE WHERE email = "anjaniy01salekar@gmail.com";
 
         }
+    }
+
+    public void deleteEmployee(Long employeeId) {
+        employeeRepository.deleteById(employeeId);
     }
 }

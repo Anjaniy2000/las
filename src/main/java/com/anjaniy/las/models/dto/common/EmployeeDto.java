@@ -1,4 +1,4 @@
-package com.anjaniy.las.models.dto;
+package com.anjaniy.las.models.dto.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,4 +12,5 @@ public class EmployeeDto {
     private String lastName;
     private String email;
     private String departmentName;
+    private Long remainingLeaves;
 }
